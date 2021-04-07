@@ -188,6 +188,11 @@ class M_data extends CI_Model
 
   }
 
+  public function year()
+  {
+    return $this->db->query("SELECT validation FROM `tbl_activity` WHERE YEAR(validation) = YEAR(NOW())")->num_rows();
+  }
+
 
 
   public function firman()
@@ -428,6 +433,13 @@ class M_data extends CI_Model
 
     AND YEAR ( validation ) = $tahun");
 
+  }
+
+  public function bar()
+  {
+    return $this->db->query("SELECT count(validation) as jumlah
+    FROM tbl_activity 
+    GROUP BY YEAR(validation), MONTH(validation)");
   }
 
   

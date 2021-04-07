@@ -20,7 +20,7 @@
 
                         <!-- Earnings (Monthly) Card Example -->
 
-                        <div class="col-xl-6 col-md-6 mb-4">
+                        <div class="col-xl-4 col-md-4 mb-4">
 
                             <div class="card border-left-primary shadow h-100 py-2">
 
@@ -56,7 +56,7 @@
 
                         <!-- Earnings (Monthly) Card Example -->
 
-                        <div class="col-xl-6 col-md-6 mb-4">
+                        <div class="col-xl-4 col-md-4 mb-4">
 
                             <div class="card border-left-success shadow h-100 py-2">
 
@@ -88,6 +88,38 @@
 
                         </div>
 
+                        <div class="col-xl-4 col-md-4 mb-4">
+
+                            <div class="card border-left-success shadow h-100 py-2">
+
+                                <div class="card-body">
+
+                                    <div class="row no-gutters align-items-center">
+
+                                        <div class="col mr-2">
+
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+
+                                                TOTAL ACTIVITY <?= date('Y'); ?></div>
+
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $tahun ?></div>
+
+                                        </div>
+
+                                        <div class="col-auto">
+
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
 
 
                     </div>
@@ -99,6 +131,20 @@
 
 
                     <div class="row">
+
+                    <!-- Grafik Batang -->
+                    <!-- <div class="col-xl-12 col-lg-12">
+                            <div class="card shadow mb-4">
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Block Grafik</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div id="bar_r" class="col-md-12" style="width:100%"></div>
+                                </div>
+                            </div>
+                        </div> -->
+                    <!-- End Grafik Batang -->
 
                     <!-- By Type Aktifiti -->
 
@@ -854,7 +900,7 @@ Highcharts.chart('tipe', {
 
               y: <?php 
 
-              $vendor = $contac;
+              $vendor = $contact;
 
               if ($vendor == null) {
 
@@ -1037,4 +1083,68 @@ Highcharts.chart('tipe', {
 </script>
 
 <!-- End type -->
+
+<!-- Bar -->
+<!-- <script type="text/javascript">
+$(function () {
+    $('#bar_r').highcharts({
+        chart: {
+            type: 'column',
+            margin: 75,
+            options3d: {
+                enabled: false,
+                alpha: 10,
+                beta: 25,
+                depth: 70
+            }
+        },
+        title: {
+            text: 'Activity Data - '.<?= date('Y') ?>,
+            style: {
+                    fontSize: '18px',
+                    fontFamily: 'Verdana, sans-serif'
+            }
+        },
+        plotOptions: {
+            column: {
+                depth: 25
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        xAxis: {
+            categories:  <?= date('F') ?>
+        },
+        exporting: { 
+            enabled: false 
+        },
+        yAxis: {
+            title: {
+                text: 'Data'
+            },
+        },
+        
+        series: [{
+            name: 'Report Data',
+            data: <?= $bar ?>,
+            shadow : true,
+            dataLabels: {
+                enabled: true,
+                color: '#045396',
+                align: 'center',
+                formatter: function() {
+                     return Highcharts.numberFormat(this.y, 0);
+                }, // one decimal
+                y: 0, // 10 pixels down from the top
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        }]
+    });
+});
+        </script> -->
+<!-- End bar -->
 
