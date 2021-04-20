@@ -86,13 +86,13 @@ $(".hapus-karyawan").on("click", function (e) {
 });
 // end Employee
 
-// Daily
-const flashDaily = $(".flash-daily").data("flashdata");
-if (flashDaily) {
+// Item
+const flashItem = $(".flash-item").data("flashdata");
+if (flashItem) {
 	Swal.fire({
 		icon: "success",
 		title: "Congratulation",
-		text: "Daily Activities data successfully " + flashDaily,
+		text: "Item data successfully " + flashItem,
 	});
 }
 
@@ -117,4 +117,4 @@ $(".hapus-daily").on("click", function (e) {
 		}
 	});
 });
-// End Daily
+// End Item

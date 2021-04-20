@@ -72,6 +72,24 @@
     <!-- Alert -->
     <script src="<?= site_url('') ?>assets/js/alert.js"></script>
 
+    <!-- Select 2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
+    <script>
+    var BASE_URL = "<?php echo base_url(); ?>";
+    </script>
+    <!-- costume js -->
+<?php
+if (isset($footer_js)) {
+    foreach ($footer_js as $fjs) { ?>
+        <script type="text/javascript" src="<?= base_url($fjs) ?>"></script>
+<?php }
+} ?>
+
 
 </body>
 

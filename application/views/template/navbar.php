@@ -34,15 +34,9 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('admin/Daily') ?>">
-                    <i class="fas fa-fw fa-business-time"></i>
-                    <span>Daily List</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('admin/Report') ?>">
-                    <i class="fas fa-fw fa-book"></i>
-                    <span>Monthly Report</span></a>
+                <a class="nav-link" href="<?= base_url('admin/Item') ?>">
+                    <i class="fas fa-suitcase"></i>
+                    <span>Item</span></a>
             </li>
 
             <!-- Divider -->
@@ -63,9 +57,15 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Master Settings:</h6>
-                        <a class="collapse-item" href="<?= site_url('admin/Master/master_tipe') ?>">Master Type Activity</a>
+                        <a class="collapse-item" href="<?= site_url('admin/Employee') ?>">Master Empoyee</a>
+                        <a class="collapse-item" href="<?= site_url('admin/Master/brand') ?>">Master Brand</a>
+                        <a class="collapse-item" href="<?= site_url('admin/Master/dept') ?>">Master Department</a>
+                        <a class="collapse-item" href="#">Master Category</a>
+                        <a class="collapse-item" href="<?= site_url('admin/Master/lokasi') ?>">Master Location</a>
+                        <a class="collapse-item" href="<?= site_url('admin/Master/category_item') ?>">Master Type</a>
+                        <a class="collapse-item" href="<?= site_url('admin/Master/sub_category') ?>">Master Sub Type</a>
                         <a class="collapse-item" href="<?= site_url('admin/Master') ?>">Master User</a>
-                        <a class="collapse-item" href="<?= site_url('admin/Employee') ?>">Master Employee</a>
+                        
                     </div>
                 </div>
             </li>

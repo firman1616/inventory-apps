@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>Inventory Apps - Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= site_url('') ?>assets/template/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -42,7 +42,7 @@
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome to Daily IT!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome to Inventory Apps !</h1>
                                     </div>
                                     <form class="user" method="POST" action="<?= base_url('Login/login_form') ?>">
                                         <div class="form-group">
