@@ -118,5 +118,48 @@ FROM
     return $hasil->result();
   }
 
+  public function master_item()
+  {
+    return $this->db->query("SELECT
+    a.id_item,
+    a.kode_jadi,
+    a.nama_item,
+    a.tipe_sn,
+    a.serial_number,
+    a.tipe_kategori,
+    a.dept_item,
+    a.kategori_item,
+    a.sub_kategori_item,
+    a.tipe_brand,
+    a.count,
+    a.warna,
+		a.keterangan,
+    a.tahun_pembelian,
+    a.validation,
+    b.id_master_dept,
+    b.dept_code,
+    b.nama_dept,
+    c.id_master_tipe,
+    c.code_master_tipe,
+		c.nama_master_tipe,
+    d.id_master_sub,
+    d.sub_code,
+		d.nama_sub,
+    e.id_master_brand,
+    e.code_brand,
+    e.nama_brand	 
+  FROM
+    `tbl_item`AS a
+  LEFT JOIN tbl_master_dept as b ON a.dept_item = b.id_master_dept
+  LEFT JOIN tbl_master_tipe as c ON a.kategori_item = c.id_master_tipe
+  LEFT JOIN tbl_master_sub_tipe as d ON a.sub_kategori_item = d.id_master_sub
+  LEFT JOIN tbl_master_brand as e ON a.tipe_brand = e.id_master_brand");
+  }
+
+  function cari($id){
+    $query= $this->db->get_where('tbl_item',array('kode_jadi'=>$id));
+    return $query;
+  }
+
 }
 

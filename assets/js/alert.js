@@ -96,15 +96,15 @@ if (flashItem) {
 	});
 }
 
-$(".hapus-daily").on("click", function (e) {
+$(".hapus-item").on("click", function (e) {
 	// hentikan aksi default
 	e.preventDefault();
 	// jqueri cariin tombol hapus yang lagi saya click, lalu ambil atributnya
 	const href = $(this).attr("href");
 
 	Swal.fire({
-		title: "Are You Sure for Delete data Daily Activities?",
-		text: "Activities data will be deleted!",
+		title: "Are You Sure for Delete data Item from Database?",
+		text: "Item data will be deleted!",
 		icon: "warning",
 		showCancelButton: true,
 		confirmButtonColor: "#3085d6",

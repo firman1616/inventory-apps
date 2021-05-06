@@ -11,7 +11,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">IT DAILY<sup>UDMW</sup></div>
+                <div class="sidebar-brand-text mx-3">INVENTORY<sup>UDMW</sup></div>
             </a>
 
             <!-- Divider -->
@@ -33,6 +33,12 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('admin/Mutasi') ?>">
+                    <i class="fas fa-random"></i>
+                    <span>Mutation</span></a>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('admin/Item') ?>">
                     <i class="fas fa-suitcase"></i>

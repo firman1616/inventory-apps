@@ -90,6 +90,25 @@ if (isset($footer_js)) {
 <?php }
 } ?>
 
+<script>
+    function autofill(){
+        var code =document.getElementById('item_code').value;
+        $.ajax({
+            url: BASE_URL + "admin/Mutasi/cari",
+            data:'&code='+code,
+            success:function(data){
+            var hasil = JSON.parse(data);  
+                     
+            $.each(hasil, function(key,val){ 
+                 
+               document.getElementById('item_code').value=val.nim;
+                document.getElementById('nama_item').value=val.nama_item; 
+                });
+            }
+                   });      
+    }
+</script>
+
 
 </body>
 
