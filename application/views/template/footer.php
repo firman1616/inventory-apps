@@ -5,7 +5,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Inventory Apps - <?= date('Y') ?></span>
                     </div>
                 </div>
             </footer>
@@ -53,13 +53,6 @@
     <script src="<?= site_url('') ?>assets/template/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="<?= site_url('') ?>assets/template/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="<?= site_url('') ?>assets/template/js/demo/chart-area-demo.js"></script>
-    <script src="<?= site_url('') ?>assets/template/js/demo/chart-pie-demo.js"></script>
-
-    <!-- Page level plugins -->
     <script src="<?= site_url('') ?>assets/template/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="<?= site_url('') ?>assets/template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
@@ -82,6 +75,7 @@
     <script>
     var BASE_URL = "<?php echo base_url(); ?>";
     </script>
+
     <!-- costume js -->
 <?php
 if (isset($footer_js)) {
@@ -89,25 +83,6 @@ if (isset($footer_js)) {
         <script type="text/javascript" src="<?= base_url($fjs) ?>"></script>
 <?php }
 } ?>
-
-<script>
-    function autofill(){
-        var code =document.getElementById('item_code').value;
-        $.ajax({
-            url: BASE_URL + "admin/Mutasi/cari",
-            data:'&code='+code,
-            success:function(data){
-            var hasil = JSON.parse(data);  
-                     
-            $.each(hasil, function(key,val){ 
-                 
-               document.getElementById('item_code').value=val.nim;
-                document.getElementById('nama_item').value=val.nama_item; 
-                });
-            }
-                   });      
-    }
-</script>
 
 
 </body>

@@ -98,7 +98,8 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Note <small > (Optional) </small> </label>
-                <textarea name="keterangan" id="keterangan" class="form-control"></textarea>
+                <!-- <textarea name="keterangan" id="keterangan" class="form-control"></textarea> -->
+                <?php echo $this->ckeditor->editor('keterangan'); ?>
             </div>
             <br>
             <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> | Add Item</button>

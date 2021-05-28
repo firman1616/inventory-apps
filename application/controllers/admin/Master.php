@@ -139,7 +139,8 @@ class Master extends CI_Controller {
             'name'	=> $this->session->userdata('nama'),
             'title' => 'Master Brand',
             'conten'=> 'conten/master_brand',
-            'brand' => $this->m_data->get_data('tbl_master_brand')
+            'brand' => $this->m_data->get_data('tbl_master_brand'),
+            'dept'  => $this->m_data->get_data('tbl_master_dept')
         ];
         $this->load->view('template/conten',$data);
     }
@@ -149,7 +150,8 @@ class Master extends CI_Controller {
         $table = 'tbl_master_brand';
         $data = array(
             'code_brand' => $this->input->post('code'),
-            'nama_brand' => $this->input->post('nama_brand')
+            'nama_brand' => $this->input->post('nama_brand'),
+            'fk_dept'    => $this->input->post('dept')
         );
         $this->m_data->simpan_data($table,$data);
         redirect('admin/Master/brand');
@@ -160,7 +162,8 @@ class Master extends CI_Controller {
         $table = 'tbl_master_brand';
         $data = array(
             'code_brand' => $this->input->post('code'),
-            'nama_brand' => $this->input->post('nama_brand')
+            'nama_brand' => $this->input->post('nama_brand'),
+            'fk_dept'    => $this->input->post('dept')
         );
         $where = array('id_master_brand' => $id);
         $this->m_data->update_data($table,$data,$where);
@@ -181,7 +184,8 @@ class Master extends CI_Controller {
             'name'	=> $this->session->userdata('nama'),
             'title' => 'Master Category Item',
             'conten'=> 'conten/master_category_item',
-            'tipe'  => $this->m_data->get_data('tbl_master_tipe')
+            'tipe'  => $this->m_data->get_data('tbl_master_tipe'),
+            'dept'  => $this->m_data->get_data('tbl_master_dept')
         ];
         $this->load->view('template/conten',$data);
     }
@@ -191,7 +195,8 @@ class Master extends CI_Controller {
         $table ='tbl_master_tipe';
         $data = array(
             'code_master_tipe' => $this->input->post('code_item'),
-            'nama_master_tipe' => $this->input->post('nama_item')
+            'nama_master_tipe' => $this->input->post('nama_item'),
+            'fk_dept'           => $this->input->post('dept')
         );
         $this->m_data->simpan_data($table,$data);
         redirect('admin/Master/category_item');
@@ -202,7 +207,8 @@ class Master extends CI_Controller {
         $table ='tbl_master_tipe';
         $data = array(
             'code_master_tipe' => $this->input->post('code_item'),
-            'nama_master_tipe' => $this->input->post('nama_item')
+            'nama_master_tipe' => $this->input->post('nama_item'),
+            'fk_dept'           => $this->input->post('dept')
         );
         $where = array('id_master_tipe' => $id);
         $this->m_data->update_data($table,$data,$where);
@@ -224,7 +230,8 @@ class Master extends CI_Controller {
             'title' => 'Master Sub Category Item',
             'conten'=> 'conten/master_sub_category_item',
             'sub'   => $this->m_data->get_data('tbl_master_sub_tipe'),
-            'master' => $this->m_data->get_data('tbl_master_tipe')
+            'master' => $this->m_data->get_data('tbl_master_tipe'),
+            'dept'  => $this->m_data->get_data('tbl_master_dept')
         ];
         $this->load->view('template/conten',$data);
     }
@@ -235,7 +242,8 @@ class Master extends CI_Controller {
         $data = array(
             'sub_code'  => $this->input->post('sub_code'),
             'nama_sub'  => $this->input->post('sub_name'),
-            'fk_tipe'  => $this->input->post('master_item')
+            'fk_tipe'  => $this->input->post('master_item'),
+            'fk_dept'           => $this->input->post('dept')
         );
         $this->m_data->simpan_data($table,$data);
         redirect('admin/Master/sub_category');
@@ -247,7 +255,8 @@ class Master extends CI_Controller {
         $data = array(
             'sub_code'  => $this->input->post('sub_code'),
             'nama_sub'  => $this->input->post('sub_name'),
-            'fk_tipe'  => $this->input->post('master_item')
+            'fk_tipe'  => $this->input->post('master_item'),
+            'fk_dept'           => $this->input->post('dept')
         );
         $where = array('id_master_sub' => $id );
         $this->m_data->update_data($table,$data,$where);

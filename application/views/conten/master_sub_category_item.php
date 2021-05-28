@@ -78,6 +78,17 @@
                 <?php } ?>
             </select>
         </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Dept</label>
+            <select name="dept" id="dept" class="form-control">
+                <option value="">Choose Dept</option>
+                <?php foreach ($dept->result() as $row) { ?>
+                  <option value="<?= $row->id_master_dept ?>"><?= $row->nama_dept ?></option>
+                <?php } ?>
+            </select>
+        </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -92,12 +103,13 @@
 <?php 
 $y=1;
 foreach ($sub->result() as $row) {  
-    $a=$row->fk_tipe; ?>
+    $a=$row->fk_tipe;
+    $b = $row->fk_dept; ?>
 
 <div class="modal fade" id="editModal<?= $y++; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-        <form action="<?= base_url('admin/Master/tambah_sub') ?>" method="post">
+        <form action="<?= base_url('admin/Master/edit_sub/'.$row->id_master_sub) ?>" method="post">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Add Data</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -121,6 +133,18 @@ foreach ($sub->result() as $row) {
                     <option <?php if ($a == $row->id_master_tipe) { 
                         echo "selected";
                     } ?> value="<?= $row->id_master_tipe ?>"><?= $row->nama_master_tipe ?></option>
+                <?php } ?>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Dept</label>
+            <select name="dept" id="dept" class="form-control">
+                <option value="">Choose Dept</option>
+                <?php foreach ($dept->result() as $row) { ?>
+                  <option <?php if ($b == $row->id_master_dept) {
+                    echo "selected";
+                  } ?> value="<?= $row->id_master_dept ?>"><?= $row->nama_dept ?></option>
                 <?php } ?>
             </select>
         </div>

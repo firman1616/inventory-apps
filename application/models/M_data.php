@@ -157,9 +157,138 @@ FROM
   }
 
   function cari($id){
-    $query= $this->db->get_where('tbl_item',array('kode_jadi'=>$id));
-    return $query;
+    return $this->db->query("SELECT * FROM `tbl_item` WHERE kode_jadi = '$id'");
   }
 
-}
+  function kode_item(){
+    return $this->db->query(
+      "SELECT
+        kode_jadi 
+      FROM
+        tbl_item 
+      WHERE
+        kode_jadi NOT IN (
+          SELECT
+            CONCAT( fk_item ) 
+          FROM
+          tbl_mutasi 
+        )
+      "
+    );
+  }
 
+  public function mutasi()
+  {
+    return $this->db->query('SELECT
+    *,
+    a.id_lokasi,
+    a.nama_lokasi,
+    b.nik,
+    b.nama_karyawan 
+  FROM
+    `tbl_mutasi`
+    LEFT JOIN tbl_master_lokasi AS a ON fk_lokasi = a.id_lokasi
+    LEFT JOIN tbl_employee AS b ON pic = b.nik');
+  }
+
+  public function brand_user($dept)
+  {
+    return $this->db->query("SELECT * FROM `tbl_master_brand` WHERE fk_dept = $dept");
+  }
+
+  public function item_user($dept)
+  {
+    return $this->db->query("SELECT * FROM `tbl_master_tipe` WHERE fk_dept = $dept");
+  }
+
+  public function sub_item_user($dept)
+  {
+    return $this->db->query("SELECT * FROM `tbl_master_sub_tipe` WHERE fk_dept = $dept");
+  }
+
+  public function master_item_user($dept)
+  {
+    return $this->db->query("SELECT
+    a.id_item,
+    a.kode_jadi,
+    a.nama_item,
+    a.tipe_sn,
+    a.serial_number,
+    a.tipe_kategori,
+    a.dept_item,
+    a.kategori_item,
+    a.sub_kategori_item,
+    a.tipe_brand,
+    a.count,
+    a.warna,
+		a.keterangan,
+    a.tahun_pembelian,
+    a.validation,
+    b.id_master_dept,
+    b.dept_code,
+    b.nama_dept,
+    c.id_master_tipe,
+    c.code_master_tipe,
+		c.nama_master_tipe,
+    d.id_master_sub,
+    d.sub_code,
+		d.nama_sub,
+    e.id_master_brand,
+    e.code_brand,
+    e.nama_brand	 
+  FROM
+    `tbl_item`AS a
+  LEFT JOIN tbl_master_dept as b ON a.dept_item = b.id_master_dept
+  LEFT JOIN tbl_master_tipe as c ON a.kategori_item = c.id_master_tipe
+  LEFT JOIN tbl_master_sub_tipe as d ON a.sub_kategori_item = d.id_master_sub
+  LEFT JOIN tbl_master_brand as e ON a.tipe_brand = e.id_master_brand WHERE dept_item = $dept");
+  }
+
+  public function dept_user($dept)
+  {
+    return $this->db->query("SELECT * FROM tbl_master_dept WHERE id_master_dept = $dept ");
+  }
+
+  function kode_item_user($dept){
+    return $this->db->query(
+      "SELECT
+        kode_jadi 
+      FROM
+        tbl_item 
+      WHERE
+        kode_jadi NOT IN (
+          SELECT
+            CONCAT( fk_item ) 
+          FROM
+          tbl_mutasi 
+        )
+        AND dept_item = $dept
+      "
+    );
+  }
+
+  public function mutasi_user($dept)
+  {
+    return $this->db->query("SELECT
+    *,
+    a.id_lokasi,
+    a.nama_lokasi,
+    b.nik,
+    b.nama_karyawan 
+  FROM
+    `tbl_mutasi`
+    LEFT JOIN tbl_master_lokasi AS a ON fk_lokasi = a.id_lokasi
+    LEFT JOIN tbl_employee AS b ON pic = b.nik WHERE fk_dept = $dept");
+  }
+
+  public function user_log($where)
+  {
+    return $this->db->query("SELECT
+    *,
+    a.nik,
+    a.nama_karyawan 
+  FROM
+    tbl_user
+    LEFT JOIN tbl_employee AS a ON nama_user = a.nik $where");
+  }
+}

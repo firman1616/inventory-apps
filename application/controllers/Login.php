@@ -39,13 +39,15 @@ class Login extends CI_Controller {
 			foreach ($cek1->result() as $row){
 				$id = $row->id_user;
 				$nama = $row->nama_user;
+				$dept = $row->dept_user;
 				// $lengkap = $row->nama_lengkap;
 			}
 			$data_session = array(
 				'status' 	=> true,
 				'level' 	=> 1,
 				'id'		=> $id,
-				'nama'		=> $nama
+				'nama'		=> $nama,
+				'dept_user'		=> $dept
 
 			);
 			$this->session->set_userdata($data_session);
@@ -54,12 +56,14 @@ class Login extends CI_Controller {
 			foreach ($cek2->result() as $row){
 				$id = $row->id_user;
 				$nama = $row->nama_user;
+				$dept = $row->dept_user;
 			}
 			$data_session = array(
 				'status' 	=> true,
 				'level' 	=> 2,
 				'id'		=> $id,
-				'nama'		=> $nama
+				'nama'		=> $nama,
+				'dept_user'		=> $dept
 			);
 
 			$this->session->set_userdata($data_session);

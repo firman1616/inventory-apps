@@ -21,6 +21,7 @@ class Dashboard extends CI_Controller {
         }
 
         //  $this->load->library('Pdf');
+        $this->load->model('M_dash','m_dash');
 
     }
 
@@ -37,28 +38,11 @@ class Dashboard extends CI_Controller {
             'name'	=> $this->session->userdata('nama'),
             'title' => 'Dashboard',
             'conten'=> 'conten/dashboard',
-            // 'today' => $this->m_data->today(),
-            // 'bulan' => $this->m_data->bulan(),
-            // 'tahun' => $this->m_data->year(),
-            // 'firman' => $this->m_data->firman(),
-            // 'kristian' => $this->m_data->kristian(),
-            // 'novita' => $this->m_data->novita(),
-	        // 'yuli'    => $this->m_data->yuli(),
-            // 'maintenance' => $this->m_data->maintenance(),
-            // 'unmaintenance' => $this->m_data->unmaintenance(),
-            // 'reguler' => $this->m_data->reguler(),
-            // 'pembayaran' => $this->m_data->pembayaran(),
-            // 'spp'   => $this->m_data->spp(),
-            // 'contact' => $this->m_data->contact(),
-            // 'main_program' =>$this->m_data->main_program(),
-            // 'trial_error' => $this->m_data->trial_eror(),
-            // 'migrasi'   => $this->m_data->migrasi(),
-            // 'backup'    => $this->m_data->backup(),
-            // 'build_program' => $this->m_data->build_program(),
-            // 'other' => $this->m_data->other(),
-            // 'meeting' => $this->m_data->meeting(),
-            // 'update_program' => $this->m_data->update_program(),
-            // 'bar' => $this->m_data->bar()
+            'total_all_item' => $this->m_dash->total_all_item(),
+            'item_ga' => $this->m_dash->item_ga(),
+            'item_it'   => $this->m_dash->item_it(),
+            'item_main' => $this->m_dash->item_main(),
+            'item_hse'  => $this->m_dash->item_hse()
 
         ];
 

@@ -118,3 +118,36 @@ $(".hapus-item").on("click", function (e) {
 	});
 });
 // End Item
+
+// Mutasi
+const flashMutasi = $(".flash-mutasi").data("flashdata");
+if (flashMutasi) {
+	Swal.fire({
+		icon: "success",
+		title: "Congratulation",
+		text: "Data successfully " + flashMutasi,
+	});
+}
+
+$(".hapus-mutasi").on("click", function (e) {
+	// hentikan aksi default
+	e.preventDefault();
+	// jqueri cariin tombol hapus yang lagi saya click, lalu ambil atributnya
+	const href = $(this).attr("href");
+
+	Swal.fire({
+		title: "Are You Sure for Delete data Mutation ?",
+		text: "Mutation data will be deleted!",
+		icon: "warning",
+		showCancelButton: true,
+		confirmButtonColor: "#3085d6",
+		cancelButtonColor: "#d33",
+		confirmButtonText: "Yes, Delete Data!",
+		// Jika hasilya true (tombol di pencet) jalankan fungsi dibawah
+	}).then((result) => {
+		if (result.value == true) {
+			document.location.href = href;
+		}
+	});
+});
+// End Mutasi

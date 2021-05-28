@@ -19,6 +19,17 @@ class Item extends CI_Controller {
             redirect(base_url("login"));
         }
         //  $this->load->library('Pdf');
+        $this->load->library(array('ckeditor'));
+    }
+
+    function editor()
+    {
+        //configure base path of ckeditor folder
+        $this->ckeditor->basePath = base_url() . 'plugin/ckeditor/';
+        $this->ckeditor->config['toolbar'] = 'Full';
+        $this->ckeditor->config['language'] = 'en';
+        $this->ckeditor->config['width'] = 800;
+        $this->ckeditor->config['height'] = 300;
     }
 	
 
@@ -38,12 +49,15 @@ class Item extends CI_Controller {
     public function v_tambah()
     {
         $data = [
-
+            'dept'  => $this->session->userdata('dept_user'),
             'name'	=> $this->session->userdata('nama'),
             'title' => 'Add Item',
             'conten'=> 'conten/tambah_item',
             'footer_js'        => array(
                 'assets/js/item.js',
+            ),
+            'ckeditor'    => array(
+                'plugin/ckeditor/ckeditor.js'
             ),
             'kategori' => $this->m_data->get_data('tbl_master_kategori'),
             'dept'  => $this->m_data->get_data('tbl_master_dept'),
@@ -131,7 +145,10 @@ class Item extends CI_Controller {
             'dept'  => $this->m_data->get_data('tbl_master_dept'),
             'tipe_item' => $this->m_data->get_data('tbl_master_tipe'),
             'brand'     => $this->m_data->get_data('tbl_master_brand'),
-            'get_data'  => $this->m_data->get_data_by_id('tbl_item', array('id_item' => $id))
+            'get_data'  => $this->m_data->get_data_by_id('tbl_item', array('id_item' => $id)),
+            'ckeditor'    => array(
+                'plugin/ckeditor/ckeditor.js'
+            )
         ];
         $this->load->view('template/conten',$data);
     }

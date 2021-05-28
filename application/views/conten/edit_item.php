@@ -42,12 +42,21 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-4 col-xs-4 col-lg-4">
-                    <div class="form-group">
-                        <label id="sn1">Serial Number    </label>
-                        <input type="text" placeholder="Serial Number" class="form-control" name="sn" id="sn2" value="<?= $c ?>">
+                <?php if ($b == 'sn') {?>
+                    <div class="col-md-4 col-xs-4 col-lg-4">
+                        <div class="form-group">
+                            <label >Serial Number    </label>
+                            <input type="text" placeholder="Serial Number" class="form-control" name="sn" value="<?= $c ?>">
+                        </div>
                     </div>
-                </div>
+                <?php }else { ?>
+                    <!-- <div class="col-md-4 col-xs-4 col-lg-4">
+                        <div class="form-group">
+                            <label id="sn1">Serial Number    </label>
+                            <input type="text" placeholder="Serial Number" class="form-control" name="sn" id="sn2" value="<?= $c ?>">
+                        </div>
+                    </div> -->
+                <?php } ?>
                 <div class="col-md-4 col-xs-4 col-lg-4">
                     <div class="form-group">
                         <label for="kategory">Category Type <small style="color:red"> * </small></label>
@@ -122,7 +131,8 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Note <small > (Optional) </small> </label>
-                <textarea name="keterangan" id="keterangan" class="form-control"><?= $l ?></textarea>
+                <!-- <textarea name="keterangan" id="keterangan" class="form-control"><?= $l ?></textarea> -->
+                <?php echo $this->ckeditor->editor('keterangan', $l); ?>
             </div>
             <br>
             <button type="submit" class="btn btn-warning"><i class="fa fa-upload"></i> | Update Item</button>

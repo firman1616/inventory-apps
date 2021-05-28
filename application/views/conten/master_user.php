@@ -36,7 +36,7 @@
                                       
                                         <tr>
                                             <td><?= $x++ ?></td>
-                                            <td><?= $row->nama_karyawan ?></td>
+                                            <td><?= $row->nama_user ?></td>
                                             <td><?= $row->nama_dept ?></td>
                                             <td><?= $row->username ?></td>
                                             <td><?= $row->keterangan ?></td>
@@ -69,7 +69,13 @@
       <div class="modal-body">
         <div class="form-group">
           <label for="nama_user">Name User</label>
-          <input list="employee" type="text" id="nama_user" name="nama_user" class="form-control">
+          <!-- <input list="employee" type="text" id="nama_user" name="nama_user" class="form-control"> -->
+          <select name="nama_user" id="nama_user" class="form-control">
+                <option value="">Choose Employee Name</option>
+                <?php foreach ($employee->result() as $row) { ?>
+                  <option value="<?= $row->nama_karyawan ?>"><?= $row->nama_karyawan ?></option>
+                <?php } ?>
+          </select>
         </div>
         <div class="form-group">
           <label for="nama_user">Dept User</label>
@@ -126,7 +132,7 @@ foreach ($user->result() as $row) {
       <div class="modal-body">
         <div class="form-group">
           <label for="nama_user">Name User</label>
-          <input list="employee" type="text" id="nama_user" name="nama_user" class="form-control" value="<?= $row->nama_user ?>">
+          <input list="employee" type="text" id="nama_user" name="nama_user" class="form-control" value="<?= $row->nama_user ?>" readonly>
         </div>
         <div class="form-group">
           <label for="nama_user">Dept User</label>
@@ -176,10 +182,10 @@ foreach ($user->result() as $row) {
 
 
 <!-- Data List -->
-<datalist id="employee">
+<!-- <datalist id="employee">
     <?php
     foreach ($employee->result() as $row) { ?>
         <option value=<?= $row->nik ?>><?= $row->nama_karyawan ?></option>
     <?php } ?>
-</datalist>
+</datalist> -->
 
